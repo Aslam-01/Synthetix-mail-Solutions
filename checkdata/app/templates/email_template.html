@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 50px;
+        }
+        h2 {
+            color: #ff0000; /* Red */
+            font-size: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 10px;
+            font-size: 20px;
+        }
+        th {
+            background-color: #f2f2f2; /* Light gray */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Light gray */
+        }
+        .error-message {
+            color: #ff0000; /* Red */
+        }
+    </style>
+</head>
+<body>
+    <h2>Errors Encountered During Data Import</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Line</th>
+                <th>Column</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for error in error_details %}
+                <tr>
+                    <td>{{ error.line }}</td>
+                    <td>{{ error.column }}</td>
+                    <td><span class="error-message">{{ error.message }}</span></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
